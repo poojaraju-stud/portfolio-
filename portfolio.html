@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1120">
+  <meta name="description" content="Pooja R's developer portfolio showcasing programming skills, projects and education.">
+
+  <title>Pooja R | Developer Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: #111b2e;
+      --border: #263650;
+      --text: #edf3fc;
+      --muted: #a1b0c5;
+      --accent: #63e6d3;
+      --accent-dark: #102d30;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 95px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1080px, 90%);
+      margin: auto;
+    }
+
+    /* Navigation */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 17, 32, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .logo span,
+    .accent {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* General sections */
+
+    section {
+      padding: 76px 0;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 66px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+      max-width: 850px;
+    }
+
+    h2 {
+      font-size: clamp(27px, 4vw, 36px);
+      letter-spacing: -1px;
+      margin-bottom: 15px;
+    }
+
+    h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 28px;
+    }
+
+    /* Home */
+
+    .hero {
+      min-height: 77vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      right: -120px;
+      top: 20%;
+      border-radius: 50%;
+      background: rgba(99, 230, 211, 0.06);
+      filter: blur(25px);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro {
+      max-width: 650px;
+      color: var(--muted);
+      margin-top: 22px;
+      font-size: 16px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    /* Buttons */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 19px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 13px;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #081719;
+      border-color: var(--accent);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    /* Project cards */
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      min-width: 0;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #456077;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project-type {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 17px 0;
+    }
+
+    .tag {
+      color: var(--accent);
+      background: var(--accent-dark);
+      border: 1px solid #214447;
+      border-radius: 30px;
+      padding: 5px 10px;
+      font-size: 11px;
+    }
+
+    .card-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 18px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .card-links a {
+      color: var(--accent);
+    }
+
+    /* Skills */
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .skill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 10px 15px;
+      border-radius: 9px;
+      font-size: 13px;
+    }
+
+    /* Education */
+
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .detail-label {
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .detail-text {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Resume */
+
+    .resume-card {
+      background: linear-gradient(135deg, #14253a, #102d30);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .resume-card p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 520px;
+    }
+
+    .resume-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Contact */
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: var(--radius);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      margin-top: 22px;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    /* Footer */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* Mobile responsive */
+
+    @media (max-width: 650px) {
+      .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      nav {
+        gap: 12px 16px;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .hero {
+        min-height: 68vh;
+      }
+
+      .card-grid,
+      .details {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .contact-card,
+      .resume-card {
+        padding: 21px;
+      }
+
+      .resume-actions {
+        width: 100%;
+      }
+
+      .resume-actions .btn {
+        flex: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container navbar">
+      <a class="logo" href="#home">Pooja<span>.</span></a>
+
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Home section -->
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <p class="eyebrow">Welcome to my portfolio</p>
+
+        <h1>
+          Hi, I'm Pooja R.<br>
+          <span class="accent">Aspiring Software Developer</span>
+        </h1>
+
+        <p class="intro">
+          I'm a Computer Science and Engineering student interested
+          in Java development, problem-solving and building practical
+          software applications. I'm looking for opportunities to
+          contribute to real projects and grow my development skills.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">
+            Explore My Projects →
+          </a>
+
+          <a class="btn btn-secondary" href="#resume">
+            View Resume ↗
+          </a>
+
+          <a class="btn btn-secondary" href="#contact">
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About section -->
+    <section id="about">
+      <div class="container">
+        <p class="eyebrow">Introduction</p>
+        <h2>About Me</h2>
+
+        <p class="section-description">
+          I'm pursuing a B.E. in Computer Science and Engineering.
+          I enjoy developing applications, debugging code and learning
+          technologies through hands-on practice. I'm interested in
+          internships, entry-level opportunities and suitable freelance
+          projects where I can apply my current skills and continue learning.
+        </p>
+      </div>
+    </section>
+
+    <!-- Projects section -->
+    <section id="projects">
+      <div class="container">
+        <p class="eyebrow">My Work</p>
+        <h2>Featured Projects</h2>
+
+        <p class="section-description">
+          A selection of programming and development projects.
+          Each description should match the features in the actual code.
+        </p>
+
+        <div class="card-grid">
+
+          <article class="card">
+            <p class="project-type">Java Development</p>
+            <h3>Banking System</h3>
+
+            <p>
+              A Java application for practising banking operations.
+              Describe the actual features implemented, such as account
+              management, deposits, withdrawals and balance checks.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">OOP</span>
+            </div>
+
+            <div class="card-links">
+              <a href="https://github.com/poojaraju-stud/codetech.java"
+                 target="_blank" rel="noopener noreferrer">
+                View Source Code ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="project-type">Java Development</p>
+            <h3>Student Management System</h3>
+
+            <p>
+              A student-record management application. Explain the
+              operations your code supports and how student records
+              are stored and managed.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Java</span>
+              <span class="tag">OOP</span>
+            </div>
+
+            <div class="card-links">
+              <a href="https://github.com/poojaraju-stud/codetech.java"
+                 target="_blank" rel="noopener noreferrer">
+                View Source Code ↗
+              </a>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="project-type">Robotics</p>
+            <h3>Arduino Human-Following Robot</h3>
+
+            <p>
+              A robotics project using sensor input and motor control
+              to follow a person. Include the sensors, components and
+              tested behaviour of your actual implementation.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Arduino</span>
+              <span class="tag">Sensors</span>
+              <span class="tag">Embedded Systems</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <p class="project-type">Software</p>
+            <h3>Personal Voice Assistant</h3>
+
+            <p>
+              A voice-assistant project designed to process spoken
+              commands. Describe the recognition tools and functions
+              you actually implemented and tested.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Speech Recognition</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills section -->
+    <section id="skills">
+      <div class="container">
+        <p class="eyebrow">Technologies</p>
+        <h2>My Skills</h2>
+
+        <p class="section-description">
+          Programming languages and technologies I have studied
+          or practised. Keep this list aligned with your actual abilities.
+        </p>
+
+        <div class="skills">
+          <span class="skill">Java</span>
+          <span class="skill">SQL</span>
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">Python</span>
+          <span class="skill">C++</span>
+          <span class="skill">Git &amp; GitHub</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education and certifications -->
+    <section id="education">
+      <div class="container">
+        <p class="eyebrow">My Background</p>
+        <h2>Education &amp; Certifications</h2>
+
+        <div class="details">
+
+          <article class="card">
+            <p class="detail-label">Education</p>
+            <h3>B.E. Computer Science and Engineering</h3>
+
+            <p class="detail-text">
+              V.S.B. College of Engineering Technical Campus,
+              Coimbatore<br>
+              Currently pursuing
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="detail-label">Certifications</p>
+            <h3>Courses &amp; Certificates</h3>
+
+            <p class="detail-text">
+              Add your completed certifications with their exact
+              course names, issuing organisations and certificate
+              links where available.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume section -->
+    <section id="resume">
+      <div class="container">
+        <p class="eyebrow">My Resume</p>
+        <h2>Want to know more?</h2>
+
+        <div class="resume-card">
+          <div>
+            <h3>View my professional resume</h3>
+
+            <p>
+              Explore my education, skills, projects and
+              qualifications in one document.
+            </p>
+          </div>
+
+          <div class="resume-actions">
+
+            <!-- Opens the existing JPG resume -->
+            <a class="btn btn-primary"
+               href="resume.jpg"
+               target="_blank"
+               rel="noopener noreferrer">
+              View Resume ↗
+            </a>
+
+            <!-- Downloads the existing JPG resume -->
+            <a class="btn btn-secondary"
+               href="resume.jpg"
+               download="Pooja_R_Resume.jpg">
+              Download Resume ↓
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact">
+      <div class="container">
+        <p class="eyebrow">Let's Connect</p>
+        <h2>Get in Touch</h2>
+
+        <div class="contact-card">
+          <h3>Have an opportunity or project?</h3>
+
+          <p class="section-description">
+            I'm interested in suitable internships, entry-level roles
+            and freelance work related to my skills. Feel free to
+            connect with me.
+          </p>
+
+          <div class="contact-links">
+
+            <a href="https://github.com/poojaraju-stud"
+               target="_blank" rel="noopener noreferrer">
+              GitHub ↗
+            </a>
+
+            <a href="https://linkedin.com/in/pooja-raju-594846379"
+               target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+
+            <a href="https://leetcode.com/u/Pooja__0320/"
+               target="_blank" rel="noopener noreferrer">
+              LeetCode ↗
+            </a>
+
+            <!-- Add your professional email and Upwork link here. -->
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Pooja R. Built with HTML and CSS.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
